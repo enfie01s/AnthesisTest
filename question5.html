@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Question 3</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="alert alert-danger mt-3" role="alert" style="display: none"></div>
+            <h1 class="mb-3">Registration</h1>
+            <form id="registration-form">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="first">First Name</label>
+                            <input type="text" name="first" class="form-control" id="first" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="last">Last Name</label>
+                            <input type="text" name="last" class="form-control" id="last" placeholder="Last Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" name="company" class="form-control" id="company" placeholder="Company">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $('#registration-form').find('input[type=submit]').on('click', this, function (e)
+            {
+                e.preventDefault();
+                let $form = $('#registration-form');
+                let $errors = '';
+                let $passwordOne = $form.find('input[name=password]');
+                let $passwordTwo = $form.find('input[name=password2]');
+                if( $passwordOne.val().length < 10 || /\d/.test($passwordOne.val()) === false || /[a-zA-Z]/.test($passwordOne.val()) === false )
+                {
+                    $errors += "Password must be at least 10 characters with a combination of letters and at least one number.";
+                    $passwordOne.css('border','1px solid red');
+                }
+                else if( $passwordOne.val() != $passwordTwo.val() )
+                {
+                    $errors += "Passwords don't match, please check and try again.";
+                    $passwordOne.css('border','1px solid red');
+                    $passwordTwo.css('border','1px solid red');
+                }
+                if( $errors.length > 0 )
+                {
+                    $('.alert-danger').html("Please correct the following errors. " + $errors + "");
+                    $('.alert-danger').show();
+                }
+                else
+                {
+                    $form.submit();
+                    $('.alert-danger').hide();
+                }
+            });
+        </script>
+    </body>
+</html>
+

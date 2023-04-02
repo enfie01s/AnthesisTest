@@ -1,0 +1,1 @@
+I would have liked to use geodjango to create a google url for the location, or event to lay the area over a map as I have done in my job at FDS but I've gotten a little rusty on that part and feel it would take a bit longer to do for perhaps not as much value. This is the sort of thing I would suggest if it were for a project.

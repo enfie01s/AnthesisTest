@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+<h1>Farm: {{ farm }}</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Produce</th>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>Last Sewn</th>
+    </tr>
+{% for field in fields %}
+    <tr>
+        <td>{{ field.name }}</td>
+        <td>{{ field.size }} sq ft</td>
+        <td>{{ field.produce }}</td>
+        <td>{{ field.latitude }}</td>
+        <td>{{ field.longitude }}</td>
+        <td>{{ field.last_sewn|date:"d M Y" }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
